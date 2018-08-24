@@ -16,7 +16,7 @@ then
 
     npm start
 
-View the accomponying back-end server repo [here](https://github.com/SodaPeaks/LakeAPI)
+View the accompanying back-end server repo [here](https://github.com/SodaPeaks/LakeAPI)
 
 ## Built With
 
