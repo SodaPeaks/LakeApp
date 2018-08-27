@@ -1,31 +1,31 @@
 import store from '../store/store';
-import { getUser } from '../components/auth/reducers';
+import { getAdmin } from '../components/auth/reducers';
 
 let token = '';
 
-const key1 = 'user';
+const key1 = 'admin';
 const storage = window.localStorage;
 
 store.subscribe(() => {
-  const user = getUser(store.getState());
-  const nextToken = user ? (user.token || '') : '';
+  const admin = getAdmin(store.getState());
+  const nextToken = admin ? (admin.token || '') : '';
   if(nextToken === token) return;
 
   token = nextToken;
-  token ? storage.setItem(key1, JSON.stringify(user)) : clearStoredUser();
+  token ? storage.setItem(key1, JSON.stringify(admin)) : clearStoredAdmin();
 });
 
-export const getStoredUser = () => {
+export const getStoredAdmin = () => {
   const json = storage.getItem(key1);
   try {
     return JSON.parse(json);
   }
   catch(err) {
-    clearStoredUser();
+    clearStoredAdmin();
   }
 };
 
-export const clearStoredUser = () => storage.removeItem(key1);
+export const clearStoredAdmin = () => storage.removeItem(key1);
 
 function request(url, options = {}, data) {
   if(data) options.body = JSON.stringify(data);
